@@ -15,6 +15,10 @@ public class Rotacao : MonoBehaviour
     //Angulo
     public float zRotate;
 
+    public bool liberaRot = false;
+
+    public bool liberaChute = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,7 @@ public class Rotacao : MonoBehaviour
     {
         RotacaoSeta();
         InputDeRotacao();
+        LimitaRotacao();
     }
 
     void PosicionaSeta()
@@ -46,14 +51,49 @@ public class Rotacao : MonoBehaviour
 
     void InputDeRotacao()
     {
-        if(Input.GetKey(KeyCode.UpArrow))
+        if(liberaRot)
         {
-            zRotate += 2.5f;
-        }
+            float moveY = Input.GetAxis("Mouse Y");
 
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            zRotate -= 2.5f;
+            if(zRotate < 90)
+            {
+                if (moveY > 0)
+                {
+                    zRotate += 2.5f;
+                }
+            }            
+            
+            if(zRotate > 0)
+            {
+                if (moveY < 0)
+                {
+                    zRotate -= 2.5f;
+                }
+            }
         }
+    }
+
+    void LimitaRotacao()
+    {
+        if(zRotate >= 90)
+        {
+            zRotate = 90;
+        }
+        
+        if(zRotate <= 0)
+        {
+            zRotate = 0;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        liberaRot = true;
+    }
+
+    private void OnMouseUp()
+    {
+        liberaRot = false;
+        liberaChute = true;
     }
 }

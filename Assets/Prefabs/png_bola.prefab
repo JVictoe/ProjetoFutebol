@@ -138,6 +138,8 @@ MonoBehaviour:
   positonStart: {fileID: 0}
   setaImg: {fileID: 0}
   zRotate: 0
+  liberaRot: 0
+  liberaChute: 0
 --- !u!114 &8908462679033608672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,4 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bola: {fileID: 4752906893605977007}
+  force: 0
   rot: {fileID: 2471549587335632361}
+  seta2: {fileID: 0}
