@@ -6,54 +6,51 @@ using UnityEngine.UI;
 public class Forca : MonoBehaviour
 {
 
-    [SerializeField] private Rigidbody2D bola = default;
-    public float force = 0;
-    [SerializeField] private Rotacao rot = default;
-    [SerializeField] private Image seta2 = default;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    //// Start is called before the first frame update
+    //void Start()
+    //{
          
-    }
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        AplicaForca();
-        ControlaForca();
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    AplicaForca();
+    //    ControlaForca();
+    //}
 
-    void AplicaForca()
-    {
+    //void AplicaForca()
+    //{
 
-        float x = force * Mathf.Cos(rot.zRotate * Mathf.Deg2Rad);
-        float y = force * Mathf.Sin(rot.zRotate * Mathf.Deg2Rad);
+    //    float x = force * Mathf.Cos(rot.zRotate * Mathf.Deg2Rad);
+    //    float y = force * Mathf.Sin(rot.zRotate * Mathf.Deg2Rad);
 
-        if(rot.liberaChute)
-        {
-            bola.AddForce(new Vector2(x, y));
-            rot.liberaChute = false;
-        }
-    }
+    //    if(rot.liberaChute)
+    //    {
+    //        bola.AddForce(new Vector2(x, y));
+    //        rot.liberaChute = false;
+    //    }
+    //}
 
-    void ControlaForca()
-    {
-        if(rot.liberaRot)
-        {
-            float moveX = Input.GetAxis("Mouse X");
+    //void ControlaForca()
+    //{
+    //    if(rot.liberaRot)
+    //    {
+    //        float moveX = Input.GetAxis("Mouse X");
 
-            if(moveX < 0)
-            {
-                seta2.fillAmount += 1 * Time.deltaTime;
-                force = seta2.fillAmount * 1000;
-            }
+    //        if(moveX < 0)
+    //        {
+    //            seta2.fillAmount += 0.8f * Time.deltaTime;
+    //            force = seta2.fillAmount * 1000;
+    //        }
 
-            if(moveX > 0)
-            {
-                seta2.fillAmount -= 1 * Time.deltaTime;
-                force = seta2.fillAmount * 1000;
-            }
-        }
-    }
+    //        if(moveX > 0)
+    //        {
+    //            seta2.fillAmount -= 0.8f * Time.deltaTime;
+    //            force = seta2.fillAmount * 1000;
+    //        }
+    //    }
+    //}
 }

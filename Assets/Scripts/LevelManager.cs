@@ -25,16 +25,20 @@ public class LevelManager : MonoBehaviour
             GameObject btnNovo = Instantiate(botao);
             BotaoLevel btnNew = btnNovo.GetComponent<BotaoLevel>();
             btnNew.levelTxtBtn.text = level.levelText;
-            btnNew.levelTxtBtn.gameObject.SetActive(level.habilitado);
+            
 
             if (PlayerPrefs.GetInt("Level" + btnNew.levelTxtBtn.text) == 1)
             {
                 level.desbloqueado = 1;
                 level.habilitado = true;
+                
             }
 
+            btnNew.levelTxtBtn.gameObject.SetActive(level.habilitado);
             btnNew.desbloqueadoBtn = level.desbloqueado;
             btnNew.GetComponent<Button>().interactable = level.habilitado;
+
+            btnNew.GetComponent<Button>().onClick.AddListener(delegate { ClickLevel("Level" + btnNew.levelTxtBtn.text); } );
 
             btnNovo.transform.SetParent(localBtn, false);
         }
