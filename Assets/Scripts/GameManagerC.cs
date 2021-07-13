@@ -17,12 +17,17 @@ public class GameManagerC : MonoBehaviour
 
     public int tiro = 0;
 
+    public bool win;
+
+    //public int ondeEstou;
+    public bool jogoComecou;
+
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -48,6 +53,11 @@ public class GameManagerC : MonoBehaviour
         {
             GameOver();
         }
+
+        if(win == true)
+        {
+            WinGame();
+        }
     }
 
     void NasceBolas()
@@ -62,11 +72,32 @@ public class GameManagerC : MonoBehaviour
 
     void Carrega(Scene cena, LoadSceneMode modo)
     {
-        pos = GameObject.Find("PosicaoInicial").GetComponent<Transform>();
+        if(OndeEstou.instance.fase != 4)
+        {
+            pos = GameObject.Find("PosicaoInicial").GetComponent<Transform>();
+            StartGame();
+        }
+        
     }
 
     void GameOver()
     {
         UiManager.instance.GameOverUI();
+        jogoComecou = false;
+    }
+
+    void WinGame()
+    {
+        UiManager.instance.WinGameUI();
+        jogoComecou = false;
+    }
+
+    void StartGame()
+    {
+        jogoComecou = true;
+        bolasNum = 2;
+        bolasEmCena = 0;
+        win = false;
+        UiManager.instance.StartUI();
     }
 }

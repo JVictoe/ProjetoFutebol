@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1502958346074476225}
   m_Layer: 5
   m_Name: FezGol
-  m_TagString: Untagged
+  m_TagString: win
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 77a1dc4875a565947906b1516db65d29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,7 +197,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502958347273200945}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!60 &1502958347273200947
 PolygonCollider2D:
   m_ObjectHideFlags: 0
