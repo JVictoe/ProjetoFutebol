@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 

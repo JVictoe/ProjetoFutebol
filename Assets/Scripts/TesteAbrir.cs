@@ -11,7 +11,7 @@ public class TesteAbrir : MonoBehaviour
     void Start()
     {
         //PlayerPrefs.SetInt("Level2", 1);
-        PlayerPrefs.DeleteKey("Level2");
+        //PlayerPrefs.DeleteKey("Level2");
     }
 
     // Update is called once per frame

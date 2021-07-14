@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class OndeEstou : MonoBehaviour
 {
 
-    public int fase;
+    public int fase = -1;
+
+    [SerializeField] private GameObject UiManagerGO = default;
+    [SerializeField] private GameObject GameManagerGO = default;
 
     public static OndeEstou instance;
 
@@ -15,17 +18,25 @@ public class OndeEstou : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+
+        SceneManager.sceneLoaded += VerificaFase;
     }
 
     void VerificaFase(Scene cena, LoadSceneMode mode)
     {
         fase = SceneManager.GetActiveScene().buildIndex;
+
+        if(fase != 4)
+        {
+            Instantiate(UiManagerGO);
+            Instantiate(GameManagerGO);
+        }
     }
 
 }

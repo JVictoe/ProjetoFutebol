@@ -27,18 +27,22 @@ public class GameManagerC : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+
         SceneManager.sceneLoaded += Carrega;
+
+        pos = GameObject.Find("PosicaoInicial").GetComponent<Transform>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        StartGame();
         ScoreManager.instance.GameStartScoreM();
     }
 
@@ -56,6 +60,7 @@ public class GameManagerC : MonoBehaviour
 
         if(win == true)
         {
+            //PlayerPrefs.SetInt("Level" + SceneManager.GetActiveScene().buildIndex + 1, 1);
             WinGame();
         }
     }

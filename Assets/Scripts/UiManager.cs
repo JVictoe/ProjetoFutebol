@@ -20,8 +20,13 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Button pauseReturnBtn = default;
 
     //LOSE
-    [SerializeField] private Button JogarNovamenteBtn = default;
-    [SerializeField] private Button FasesBtn = default;
+    [SerializeField] private Button JogarNovamenteLoseBtn = default;
+    [SerializeField] private Button FasesLoseBtn = default;
+
+    //Win
+    [SerializeField] private Button btnLevelWin = default;
+    [SerializeField] private Button btnNovamenteWin = default;
+    [SerializeField] private Button btnAvancaWin = default;
 
     public int moedasNumAntes;
     public int moedasNumDepois;
@@ -32,35 +37,58 @@ public class UiManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
-        SceneManager.sceneLoaded += CarregaPontuacao;   
+        SceneManager.sceneLoaded += CarregaPontuacao;
+
+        PegaDados();
     }
 
     void CarregaPontuacao(Scene cena, LoadSceneMode modo)
     {
-        if(OndeEstou.instance.fase != 4)
+        PegaDados();
+    }
+
+    void PegaDados()
+    {
+        if (OndeEstou.instance.fase != 4)
         {
             pontuacaoUI = GameObject.Find("PontosUI").GetComponent<TextMeshProUGUI>();
             bolasUI = GameObject.Find("bolasUI").GetComponent<TextMeshProUGUI>();
+
             losePanel = GameObject.Find("LosePanel");
             winPanel = GameObject.Find("WinPanel");
             pausePanel = GameObject.Find("PausePanel");
+
             pauseBtn = GameObject.Find("Pause").GetComponent<Button>();
             pauseReturnBtn = GameObject.Find("PauseRetrono").GetComponent<Button>();
-            JogarNovamenteBtn = GameObject.Find("JogarNovamenteLose").GetComponent<Button>();
-            FasesBtn = GameObject.Find("MenuFasesLose").GetComponent<Button>();
+
+            //Lose
+            JogarNovamenteLoseBtn = GameObject.Find("JogarNovamenteLose").GetComponent<Button>();
+            FasesLoseBtn = GameObject.Find("MenuFasesLose").GetComponent<Button>();
+
+            //Win
+            btnLevelWin = GameObject.Find("MenuFasesWin").GetComponent<Button>();
+            btnNovamenteWin = GameObject.Find("NovamenteWin").GetComponent<Button>();
+            btnAvancaWin = GameObject.Find("AvancarWin").GetComponent<Button>();
+
 
             pauseBtn.onClick.AddListener(Pause);
             pauseReturnBtn.onClick.AddListener(Play);
 
-            JogarNovamenteBtn.onClick.AddListener(JogarNovamente);
-            FasesBtn.onClick.AddListener(Fases);
+            //Eventos lose
+            JogarNovamenteLoseBtn.onClick.AddListener(JogarNovamente);
+            FasesLoseBtn.onClick.AddListener(Fases);
+
+            //Eventos win
+            btnLevelWin.onClick.AddListener(Fases);
+            btnNovamenteWin.onClick.AddListener(JogarNovamente);
+            btnAvancaWin.onClick.AddListener(ProximaFase);
 
             moedasNumAntes = PlayerPrefs.GetInt("moedasSave");
         }
@@ -151,7 +179,17 @@ public class UiManager : MonoBehaviour
         {
             resultado = 0;
             SceneManager.LoadScene("Level_Game");
-        }
-        
+        }  
     }
+
+    void ProximaFase()
+    {
+        if(GameManagerC.instance.win)
+        {
+            int temp = OndeEstou.instance.fase + 1;
+
+            SceneManager.LoadScene(temp);
+        }
+    }
+
 }

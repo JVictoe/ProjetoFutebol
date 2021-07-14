@@ -44,6 +44,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        Destroy(GameObject.Find("UiManager(Clone)"));
+        Destroy(GameObject.Find("GameManager(Clone)"));
+    }
+
     void ClickLevel(string level)
     {
         SceneManager.LoadScene(level);
