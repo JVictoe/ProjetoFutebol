@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class OndeEstou : MonoBehaviour
 {
 
-    public int fase = -1;
+    public int fase;
 
     [SerializeField] private GameObject UiManagerGO = default;
     [SerializeField] private GameObject GameManagerGO = default;
@@ -22,7 +22,7 @@ public class OndeEstou : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         SceneManager.sceneLoaded += VerificaFase;

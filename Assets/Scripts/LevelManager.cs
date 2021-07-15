@@ -22,10 +22,10 @@ public class LevelManager : MonoBehaviour
     {
         foreach(Level level in levelList)
         {
-            GameObject btnNovo = Instantiate(botao);
+            GameObject btnNovo = Instantiate(botao) as GameObject;
             BotaoLevel btnNew = btnNovo.GetComponent<BotaoLevel>();
             btnNew.levelTxtBtn.text = level.levelText;
-            
+            Debug.LogError("O que tem aqui ::: ? " + PlayerPrefs.GetInt("Level" + btnNew.levelTxtBtn.text) + " index " + btnNew.levelTxtBtn.text);
 
             if (PlayerPrefs.GetInt("Level" + btnNew.levelTxtBtn.text) == 1)
             {
@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
             btnNew.desbloqueadoBtn = level.desbloqueado;
             btnNew.GetComponent<Button>().interactable = level.habilitado;
 
-            btnNew.GetComponent<Button>().onClick.AddListener(delegate { ClickLevel("Level" + btnNew.levelTxtBtn.text); } );
+            btnNew.GetComponent<Button>().onClick.AddListener(() => ClickLevel("Level"+btnNew.levelTxtBtn.text));
 
             btnNovo.transform.SetParent(localBtn, false);
         }
@@ -64,6 +64,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

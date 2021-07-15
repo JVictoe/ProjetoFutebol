@@ -1548,8 +1548,8 @@ MonoBehaviour:
   localBtn: {fileID: 955620450}
   levelList:
   - levelText: 1
-    habilitado: 1
-    desbloqueado: 1
+    habilitado: 0
+    desbloqueado: 0
   - levelText: 2
     habilitado: 0
     desbloqueado: 0

@@ -53,10 +53,10 @@ public class UiManager : MonoBehaviour
     {
         PegaDados();
     }
-    private void Start()
-    {
-        PegaDados();
-    }
+    //private void Update()
+    //{
+    //    PegaDados();
+    //}
 
     void PegaDados()
     {
@@ -177,12 +177,12 @@ public class UiManager : MonoBehaviour
             resultado = moedasNumDepois - moedasNumAntes;
             ScoreManager.instance.PerdeMoedas(resultado);
             resultado = 0;
-            SceneManager.LoadScene("Level_Game");
+            SceneManager.LoadScene(4);
         }
         else
         {
             resultado = 0;
-            SceneManager.LoadScene("Level_Game");
+            SceneManager.LoadScene(4);
         }  
     }
 
