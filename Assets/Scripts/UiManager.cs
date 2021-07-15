@@ -41,7 +41,7 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         SceneManager.sceneLoaded += CarregaPontuacao;
@@ -50,6 +50,10 @@ public class UiManager : MonoBehaviour
     }
 
     void CarregaPontuacao(Scene cena, LoadSceneMode modo)
+    {
+        PegaDados();
+    }
+    private void Start()
     {
         PegaDados();
     }

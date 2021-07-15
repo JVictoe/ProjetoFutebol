@@ -31,7 +31,7 @@ public class GameManagerC : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         SceneManager.sceneLoaded += Carrega;

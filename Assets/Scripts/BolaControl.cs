@@ -173,6 +173,9 @@ public class BolaControl : MonoBehaviour
         if(collision.gameObject.CompareTag("win"))
         {
             GameManagerC.instance.win = true;
+            int temp = OndeEstou.instance.fase;
+            temp++;
+            PlayerPrefs.GetInt("Level" + temp, 1);
         }
     }
 
